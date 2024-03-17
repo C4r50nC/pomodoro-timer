@@ -72,6 +72,7 @@ function renderTask(taskIndex) {
   taskName.type = "text";
   taskName.placeholder = "Enter a task...";
   taskName.value = tasks[taskIndex];
+  taskName.className = "task-name-input";
   taskName.addEventListener("change", () => {
     tasks[taskIndex] = taskName.value;
     saveTasks();
@@ -80,6 +81,7 @@ function renderTask(taskIndex) {
   const deleteBtn = document.createElement("input");
   deleteBtn.type = "button";
   deleteBtn.value = "X";
+  deleteBtn.className = "task-delete-btn";
   deleteBtn.addEventListener("click", () => {
     deleteTask(taskIndex);
   });
