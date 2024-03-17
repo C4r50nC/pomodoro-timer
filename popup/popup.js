@@ -2,17 +2,19 @@ let tasks = [];
 
 function updateTimeDisplay() {
   const secondsInMinute = 60;
-  chrome.storage.local.get(["timerInSeconds"], (res) => {
+  const minutesDisplayLength = 2;
+  const secondsDisplayLength = 2;
+
+  chrome.storage.local.get(["timerInSeconds", "timeOptionInMinutes"], (res) => {
     const timeDisplay = document.getElementById("time-display");
-    const minutes = `${25 - Math.ceil(res.timerInSeconds / 60)}`.padStart(
-      2,
-      "0"
-    );
+    const minutes = `${
+      res.timeOptionInMinutes - Math.ceil(res.timerInSeconds / secondsInMinute)
+    }`.padStart(minutesDisplayLength, "0");
     let seconds = "00";
     if (res.timerInSeconds % secondsInMinute !== 0) {
       seconds = `${
         secondsInMinute - (res.timerInSeconds % secondsInMinute)
-      }`.padStart(2, "0");
+      }`.padStart(secondsDisplayLength, "0");
     }
     timeDisplay.textContent = `${minutes}:${seconds}`;
   });
