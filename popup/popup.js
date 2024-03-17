@@ -1,7 +1,7 @@
 const tasks = [];
 
 const addTaskBtn = document.getElementById("add-task-btn");
-addTaskBtn.addEventListener("click", () => addTaskBtn());
+addTaskBtn.addEventListener("click", () => addTask());
 
 function addTask() {
   const tasksNum = tasks.length;
